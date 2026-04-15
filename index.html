@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Look Lash Studio — Master Lash Artistry in North Vancouver</title>
+<meta name="description" content="8 years of master lash artistry. Lash extensions, lifts, brow lamination & training in North Vancouver, BC.">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        charcoal: '#2C2C2C',
+        espresso: '#3E2723',
+        mocha: '#5D4037',
+        nude: '#F5E6D3',
+        blush: '#F0D9D4',
+        rose: '#C9A89A',
+        gold: '#C9A96E',
+        cream: '#FDF8F4',
+        warmwhite: '#FEFCF9',
+      },
+      fontFamily: {
+        display: ['Playfair Display', 'serif'],
+        body: ['Inter', 'sans-serif'],
+      }
+    }
+  }
+}
+</script>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', sans-serif; background: #FEFCF9; color: #2C2C2C; overflow-x: hidden; }
+
+/* Scroll reveal */
+.reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* Hero parallax shimmer */
+@keyframes shimmer { 0% { background-position: -200% center; } 100% { background-position: 200% center; } }
+.hero-shimmer {
+  background: linear-gradient(90deg, transparent 0%, rgba(201,169,110,0.08) 50%, transparent 100%);
+  background-size: 200% 100%;
+  animation: shimmer 4s ease-in-out infinite;
+}
+
+/* Gold underline animation */
+.gold-line { position: relative; }
+.gold-line::after {
+  content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px;
+  background: #C9A96E; transition: width 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.gold-line:hover::after { width: 100%; }
+
+/* Service card hover */
+.service-card { transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+.service-card:hover { transform: translateY(-8px); box-shadow: 0 20px 60px rgba(0,0,0,0.1); }
+.service-card:hover .service-icon { transform: scale(1.1); }
+.service-icon { transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+
+/* Gallery before/after slider */
+.ba-container { position: relative; overflow: hidden; cursor: col-resize; }
+.ba-image { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; }
+.ba-before { z-index: 1; }
+.ba-after { z-index: 2; clip-path: inset(0 50% 0 0); }
+.ba-slider { z-index: 3; position: absolute; top: 0; bottom: 0; width: 4px; background: #C9A96E; left: 50%; transform: translateX(-50%); }
+.ba-slider::after {
+  content: '⟷'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  background: #C9A96E; color: white; width: 40px; height: 40px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center; font-size: 16px;
+}
+
+/* Testimonial card */
+.testimonial-card { transition: all 0.3s ease; }
+.testimonial-card:hover { transform: scale(1.02); }
+
+/* Floating CTA */
+.float-cta { animation: float 3s ease-in-out infinite; }
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+
+/* Nav blur */
+.nav-blur { backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #FEFCF9; }
+::-webkit-scrollbar-thumb { background: #C9A89A; border-radius: 4px; }
+
+/* Marquee */
+@keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+.marquee { animation: marquee 30s linear infinite; }
+
+/* Stat counter pulse */
+@keyframes pulse-soft { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; } }
+.stat-pulse { animation: pulse-soft 2s ease-in-out infinite; }
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #C9A96E 0%, #D4B87A 50%, #C9A96E 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Section divider */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #C9A96E, transparent);
+  opacity: 0.3;
+}
+</style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 nav-blur bg-warmwhite/80 transition-all duration-500">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <a href="#" class="font-display text-2xl font-semibold tracking-tight text-charcoal">
+      The Look<span class="text-gold">.</span>
+    </a>
+    <div class="hidden md:flex items-center gap-8">
+      <a href="#services" class="gold-line font-body text-sm tracking-wider uppercase text-mocha hover:text-charcoal transition-colors">Services</a>
+      <a href="#about" class="gold-line font-body text-sm tracking-wider uppercase text-mocha hover:text-charcoal transition-colors">About</a>
+      <a href="#gallery" class="gold-line font-body text-sm tracking-wider uppercase text-mocha hover:text-charcoal transition-colors">Gallery</a>
+      <a href="#training" class="gold-line font-body text-sm tracking-wider uppercase text-mocha hover:text-charcoal transition-colors">Training</a>
+      <a href="#contact" class="gold-line font-body text-sm tracking-wider uppercase text-mocha hover:text-charcoal transition-colors">Contact</a>
+      <a href="#book" class="ml-4 px-6 py-2.5 bg-charcoal text-white font-body text-sm tracking-wider uppercase rounded-full hover:bg-espresso transition-all duration-300 hover:shadow-lg">Book Now</a>
+    </div>
+    <button id="menuBtn" class="md:hidden text-charcoal" onclick="toggleMenu()">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
+  </div>
+  <!-- Mobile menu -->
+  <div id="mobileMenu" class="hidden md:hidden bg-warmwhite border-t border-nude/50 px-6 py-6">
+    <div class="flex flex-col gap-4">
+      <a href="#services" onclick="toggleMenu()" class="font-body text-sm tracking-wider uppercase text-mocha">Services</a>
+      <a href="#about" onclick="toggleMenu()" class="font-body text-sm tracking-wider uppercase text-mocha">About</a>
+      <a href="#gallery" onclick="toggleMenu()" class="font-body text-sm tracking-wider uppercase text-mocha">Gallery</a>
+      <a href="#training" onclick="toggleMenu()" class="font-body text-sm tracking-wider uppercase text-mocha">Training</a>
+      <a href="#contact" onclick="toggleMenu()" class="font-body text-sm tracking-wider uppercase text-mocha">Contact</a>
+      <a href="#book" onclick="toggleMenu()" class="mt-2 px-6 py-3 bg-charcoal text-white font-body text-sm tracking-wider uppercase rounded-full text-center">Book Now</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="relative min-h-screen flex items-center overflow-hidden bg-charcoal">
+  <div class="hero-shimmer absolute inset-0"></div>
+  <!-- Subtle mountain silhouette -->
+  <div class="absolute bottom-0 left-0 right-0 opacity-10">
+    <svg viewBox="0 0 1440 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 200L120 140L240 160L360 80L480 120L600 40L720 100L840 20L960 80L1080 60L1200 100L1320 40L1440 80V200H0Z" fill="#C9A96E"/>
+    </svg>
+  </div>
+  <div class="absolute inset-0 bg-gradient-to-b from-charcoal/40 via-transparent to-charcoal/80"></div>
+  <div class="relative z-10 max-w-7xl mx-auto px-6 py-32 md:py-0 w-full">
+    <div class="max-w-3xl">
+      <p class="font-body text-gold text-sm tracking-[0.3em] uppercase mb-6 reveal">North Vancouver, BC</p>
+      <h1 class="font-display text-5xl md:text-7xl lg:text-8xl font-medium text-white leading-[0.95] mb-8 reveal">
+        Master Lash<br>Artistry<span class="gradient-text">.</span>
+      </h1>
+      <p class="font-body text-lg md:text-xl text-rose/90 max-w-lg mb-4 reveal">8 years of precision. Hundreds of transformations.</p>
+      <p class="font-body text-base text-white/60 max-w-md mb-10 reveal">Lash extensions, lifts, brow lamination & artist training — crafted with intention at The Look Lash Studio.</p>
+      <div class="flex flex-wrap gap-4 reveal">
+        <a href="#book" class="px-8 py-4 bg-gold text-charcoal font-body text-sm tracking-wider uppercase rounded-full hover:bg-white transition-all duration-300 hover:shadow-2xl">Book Your Appointment</a>
+        <a href="#services" class="px-8 py-4 border border-white/30 text-white font-body text-sm tracking-wider uppercase rounded-full hover:bg-white/10 transition-all duration-300">Explore Services</a>
+      </div>
+    </div>
+  </div>
+  <!-- Stats bar -->
+  <div class="absolute bottom-0 left-0 right-0 bg-charcoal/80 backdrop-blur-sm border-t border-white/10">
+    <div class="max-w-7xl mx-auto px-6 py-6 grid grid-cols-3 gap-8">
+      <div class="text-center reveal">
+        <p class="font-display text-3xl md:text-4xl text-gold stat-pulse">8+</p>
+        <p class="font-body text-xs tracking-wider uppercase text-white/60 mt-1">Years Experience</p>
+      </div>
+      <div class="text-center reveal">
+        <p class="font-display text-3xl md:text-4xl text-gold stat-pulse">500+</p>
+        <p class="font-body text-xs tracking-wider uppercase text-white/60 mt-1">Happy Clients</p>
+      </div>
+      <div class="text-center reveal">
+        <p class="font-display text-3xl md:text-4xl text-gold stat-pulse">⭐⭐⭐⭐⭐</p>
+        <p class="font-body text-xs tracking-wider uppercase text-white/60 mt-1">5-Star Rated</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Marquee -->
+<div class="bg-nude/40 border-y border-nude overflow-hidden py-4">
+  <div class="marquee whitespace-nowrap flex items-center gap-12 font-body text-sm tracking-widest uppercase text-mocha/60">
+    <span>Lash Extensions</span><span class="text-gold">✦</span>
+    <span>Lash Lift & Tint</span><span class="text-gold">✦</span>
+    <span>Brow Lamination</span><span class="text-gold">✦</span>
+    <span>Artist Training</span><span class="text-gold">✦</span>
+    <span>Classic Sets</span><span class="text-gold">✦</span>
+    <span>Volume Sets</span><span class="text-gold">✦</span>
+    <span>Mega Volume</span><span class="text-gold">✦</span>
+    <span>Hybrid Sets</span><span class="text-gold">✦</span>
+    <span>Lash Extensions</span><span class="text-gold">✦</span>
+    <span>Lash Lift & Tint</span><span class="text-gold">✦</span>
+    <span>Brow Lamination</span><span class="text-gold">✦</span>
+    <span>Artist Training</span><span class="text-gold">✦</span>
+    <span>Classic Sets</span><span class="text-gold">✦</span>
+    <span>Volume Sets</span><span class="text-gold">✦</span>
+  </div>
+</div>
+
+<!-- Services Section -->
+<section id="services" class="py-24 md:py-32 bg-warmwhite">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-16 reveal">
+      <p class="font-body text-gold text-sm tracking-[0.3em] uppercase mb-4">What We Offer</p>
+      <h2 class="font-display text-4xl md:text-5xl font-medium text-charcoal">Our Services</h2>
+      <div class="w-16 h-0.5 bg-gold mx-auto mt-6"></div>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <!-- Lash Extensions -->
+      <div class="service-card bg-white rounded-2xl p-8 border border-nude/50 reveal">
+        <div class="service-icon text-5xl mb-6">👁️</div>
+        <h3 class="font-display text-xl font-medium text-charcoal mb-3">Lash Extensions</h3>
+        <p class="font-body text-sm text-mocha/70 leading-relaxed mb-6">Classic, hybrid, volume & mega volume — custom-mapped to your eye shape for a flawless, natural look.</p>
+        <div class="flex items-center justify-between">
+          <span class="font-body text-xs tracking-wider uppercase text-gold">From $120</span>
+          <a href="#book" class="font-body text-xs tracking-wider uppercase text-charcoal hover:text-gold transition-colors">Book →</a>
+        </div>
+      </div>
+      <!-- Lash Lift & Tint -->
+      <div class="service-card bg-white rounded-2xl p-8 border border-nude/50 reveal">
+        <div class="service-icon text-5xl mb-6">✨</div>
+        <h3 class="font-display text-xl font-medium text-charcoal mb-3">Lash Lift & Tint</h3>
+        <p class="font-body text-sm text-mocha/70 leading-relaxed mb-6">Wake up with lifted, tinted lashes. Low-maintenance beauty that lasts 6-8 weeks. No extensions needed.</p>
+        <div class="flex items-center justify-between">
+          <span class="font-body text-xs tracking-wider uppercase text-gold">From $85</span>
+          <a href="#book" class="font-body text-xs tracking-wider uppercase text-charcoal hover:text-gold transition-colors">Book →</a>
+        </div>
+      </div>
+      <!-- Brow Lamination -->
+      <div class="service-card bg-white rounded-2xl p-8 border border-nude/50 reveal">
+        <div class="service-icon text-5xl mb-6">🪄</div>
+        <h3 class="font-display text-xl font-medium text-charcoal mb-3">Brow Lamination & Tint</h3>
+        <p class="font-body text-sm text-mocha/70 leading-relaxed mb-6">Fluffy, full brows that stay all day. Lamination + tint for that brushed-up, model-off-duty look.</p>
+        <div class="flex items-center justify-between">
+          <span class="font-body text-xs tracking-wider uppercase text-gold">From $75</span>
+          <a href="#book" class="font-body text-xs tracking-wider uppercase text-charcoal hover:text-gold transition-colors">Book →</a>
+        </div>
+      </div>
+      <!-- Training -->
+      <div class="service-card bg-charcoal rounded-2xl p-8 border border-charcoal reveal">
+        <div class="service-icon text-5xl mb-6">🎓</div>
+        <h3 class="font-display text-xl font-medium text-white mb-3">Lash Training</h3>
+        <p class="font-body text-sm text-white/70 leading-relaxed mb-6">Ready to start your lash career? Comprehensive training courses for aspiring lash artists. Learn from a master.</p>
+        <div class="flex items-center justify-between">
+          <span class="font-body text-xs tracking-wider uppercase text-gold">Learn More</span>
+          <a href="#training" class="font-body text-xs tracking-wider uppercase text-white hover:text-gold transition-colors">Details →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- About Section -->
+<section id="about" class="py-24 md:py-32 bg-cream">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <div class="reveal">
+        <div class="relative">
+          <div class="aspect-[3/4] bg-gradient-to-br from-nude to-blush rounded-3xl overflow-hidden flex items-center justify-center">
+            <div class="text-center p-8">
+              <p class="font-display text-8xl md:text-9xl text-gold/30">8</p>
+              <p class="font-body text-sm tracking-widest uppercase text-mocha/60 mt-2">Years of Mastery</p>
+            </div>
+          </div>
+          <div class="absolute -bottom-6 -right-6 bg-gold text-charcoal px-6 py-4 rounded-2xl shadow-xl">
+            <p class="font-display text-2xl font-semibold">Master</p>
+            <p class="font-body text-xs tracking-wider uppercase">Lash Artist</p>
+          </div>
+        </div>
+      </div>
+      <div class="reveal">
+        <p class="font-body text-gold text-sm tracking-[0.3em] uppercase mb-4">Meet Your Artist</p>
+        <h2 class="font-display text-4xl md:text-5xl font-medium text-charcoal leading-tight mb-6">Tannis McLean</h2>
+        <div class="section-divider mb-8"></div>
+        <p class="font-body text-mocha/80 leading-relaxed mb-6">
+          With 8 years of dedicated practice, Tannis has honed her craft into an art form. As a Master Lash Artist and certified trainer, she brings precision, creativity, and deep expertise to every appointment.
+        </p>
+        <p class="font-body text-mocha/80 leading-relaxed mb-8">
+          Based in North Vancouver, her studio is a calm, elevated space where west coast beauty meets meticulous technique. Whether you're after a natural enhancement or a dramatic transformation, Tannis maps every set to your unique eye shape.
+        </p>
+        <div class="flex flex-wrap gap-3 mb-8">
+          <span class="px-4 py-2 bg-white rounded-full font-body text-xs tracking-wider uppercase text-mocha border border-nude">Classic Specialist</span>
+          <span class="px-4 py-2 bg-white rounded-full font-body text-xs tracking-wider uppercase text-mocha border border-nude">Volume Expert</span>
+          <span class="px-4 py-2 bg-white rounded-full font-body text-xs tracking-wider uppercase text-mocha border border-nude">Certified Trainer</span>
+          <span class="px-4 py-2 bg-white rounded-full font-body text-xs tracking-wider uppercase text-mocha border border-nude">8 Years</span>
+        </div>
+        <div class="flex items-center gap-6">
+          <a href="https://instagram.com/tm.lashes" target="_blank" class="flex items-center gap-2 font-body text-sm text-mocha hover:text-gold transition-colors">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            @tm.lashes
+          </a>
+          <a href="https://instagram.com/thelooklashstudio" target="_blank" class="flex items-center gap-2 font-body text-sm text-mocha hover:text-gold transition-colors">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            @thelooklashstudio
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Before/After Gallery -->
+<section id="gallery" class="py-24 md:py-32 bg-charcoal">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-16 reveal">
+      <p class="font-body text-gold text-sm tracking-[0.3em] uppercase mb-4">See The Difference</p>
+      <h2 class="font-display text-4xl md:text-5xl font-medium text-white">Before & After</h2>
+      <div class="w-16 h-0.5 bg-gold mx-auto mt-6"></div>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <!-- Gallery Item 1 -->
+      <div class="reveal group">
+        <div class="ba-container aspect-[4/5] rounded-2xl overflow-hidden relative" data-slider>
+          <div class="absolute inset-0 bg-gradient-to-br from-nude/80 to-rose/40 flex items-center justify-center">
+            <div class="text-center">
+              <p class="font-display text-2xl text-white/80 mb-1">Classic Set</p>
+              <p class="font-body text-xs tracking-wider uppercase text-gold">Before</p>
+            </div>
+          </div>
+          <div class="absolute inset-0 bg-gradient-to-br from-mocha/80 to-charcoal/90 flex items-center justify-center" style="clip-path: inset(0 50% 0 0);">
+            <div class="text-center">
+              <p class="font-display text-2xl text-gold mb-1">Classic Set</p>
+              <p class="font-body text-xs tracking-wider uppercase text-gold/80">After ✦</p>
+            </div>
+          </div>
+          <div class="ba-slider"></div>
+        </div>
+        <p class="font-body text-sm text-white/60 text-center mt-4">Classic lash extensions — natural enhancement</p>
+      </div>
+      <!-- Gallery Item 2 -->
+      <div class="reveal group">
+        <div class="ba-container aspect-[4/5] rounded-2xl overflow-hidden relative" data-slider>
+          <div class="absolute inset-0 bg-gradient-to-br from-blush/80 to-nude/40 flex items-center justify-center">
+            <div class="text-center">
+              <p class="font-display text-2xl text-white/80 mb-1">Volume Set</p>
+              <p class="font-body text-xs tracking-wider uppercase text-gold">Before</p>
+            </div>
+          </div>
+          <div class="absolute inset-0 bg-gradient-to-br from-espresso/80 to-charcoal/90 flex items-center justify-center" style="clip-path: inset(0 50% 0 0);">
+            <div class="text-center">
+              <p class="font-display text-2xl text-gold mb-1">Volume Set</p>
+              <p class="font-body text-xs tracking-wider uppercase text-gold/80">After ✦</p>
+            </div>
+          </div>
+          <div class="ba-slider"></div>
+        </div>
+        <p class="font-body text-sm text-white/60 text-center mt-4">Volume lash extensions — dramatic fullness</p>
+      </div>
+      <!-- Gallery Item 3 -->
+      <div class="reveal group">
+        <div class="ba-container aspect-[4/5] rounded-2xl overflow-hidden relative" data-slider>
+          <div class="absolute inset-0 bg-gradient-to-br from-rose/60 to-blush/40 flex items-center justify-center">
+            <div class="text-center">
+              <p class="font-display text-2xl text-white/80 mb-1">Lash Lift</p>
+              <p class="font-body text-xs tracking-wider uppercase text-gold">Before</p>
+            </div>
+          </div>
+          <div class="absolute inset-0 bg-gradient-to-br from-mocha/80 to-espresso/90 flex items-center justify-center" style="clip-path: inset(0 50% 0 0);">
+            <div class="text-center">
+              <p class="font-display text-2xl text-gold mb-1">Lash Lift</p>
+              <p class="font-body text-xs tracking-wider uppercase text-gold/80">After ✦</p>
+            </div>
+          </div>
+          <div class="ba-slider"></div>
+        </div>
+        <p class="font-body text-sm text-white/60 text-center mt-4">Lash lift & tint — effortless beauty</p>
+      </div>
+    </div>
+    <p class="font-body text-sm text-white/40 text-center mt-8 reveal">📸 Swipe or drag to compare • Real client results</p>
+  </div>
+</section>
+
+<!-- Training Section -->
+<section id="training" class="py-24 md:py-32 bg-warmwhite relative overflow-hidden">
+  <!-- Subtle background pattern -->
+  <div class="absolute inset-0 opacity-5">
+    <div class="absolute top-20 right-20 w-96 h-96 rounded-full bg-gold blur-3xl"></div>
+    <div class="absolute bottom-20 left-20 w-64 h-64 rounded-full bg-rose blur-3xl"></div>
+  </div>
+  <div class="relative max-w-7xl mx-auto px-6">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <div class="reveal">
+        <p class="font-body text-gold text-sm tracking-[0.3em] uppercase mb-4">Start Your Career</p>
+        <h2 class="font-display text-4xl md:text-5xl font-medium text-charcoal leading-tight mb-6">
+          Lash Artist<br>Training Programs
+        </h2>
+        <div class="section-divider mb-8"></div>
+        <p class="font-body text-mocha/80 leading-relaxed mb-8">
+          Ready to turn your passion into a career? Learn from a Master Lash Artist with 8 years of experience. Our comprehensive training programs give you everything you need to start booking clients confidently.
+        </p>
+        <div class="space-y-6 mb-10">
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 bg-nude rounded-xl flex items-center justify-center shrink-0">
+              <span class="text-xl">📋</span>
+            </div>
+            <div>
+              <h4 class="font-display text-lg font-medium text-charcoal">Beginner Lash Course</h4>
+              <p class="font-body text-sm text-mocha/70 mt-1">Foundation techniques, lash mapping, adhesive management & hands-on practice. No experience needed.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 bg-nude rounded-xl flex items-center justify-center shrink-0">
+              <span class="text-xl">🎯</span>
+            </div>
+            <div>
+              <h4 class="font-display text-lg font-medium text-charcoal">Volume & Mega Volume</h4>
+              <p class="font-body text-sm text-mocha/70 mt-1">Advanced fan techniques for volume & mega volume sets. Level up your lash game.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 bg-nude rounded-xl flex items-center justify-center shrink-0">
+              <span class="text-xl">🏆</span>
+            </div>
+            <div>
+              <h4 class="font-display text-lg font-medium text-charcoal">Mentorship Program</h4>
+              <p class="font-body text-sm text-mocha/70 mt-1">One-on-one coaching with Tannis. Build your business, refine your craft, grow your clientele.</p>
+            </div>
+          </div>
+        </div>
+        <a href="#book" class="inline-flex items-center gap-2 px-8 py-4 bg-charcoal text-white font-body text-sm tracking-wider uppercase rounded-full hover:bg-espresso transition-all duration-300 hover:shadow-xl">
+          Apply for Training
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+      </div>
+      <div class="reveal">
+        <div class="bg-gradient-to-br from-charcoal to-espresso rounded-3xl p-10 md:p-12 text-white">
+          <p class="font-display text-3xl md:text-4xl font-medium leading-tight mb-4">"The best investment I made for my lash career."</p>
+          <div class="w-12 h-0.5 bg-gold mb-6"></div>
+          <div class="space-y-4">
+            <div class="flex items-center gap-3">
+              <span class="text-gold text-lg">✦</span>
+              <p class="font-body text-sm text-white/80">Small class sizes for maximum hands-on time</p>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="text-gold text-lg">✦</span>
+              <p class="font-body text-sm text-white/80">Professional kit included with every course</p>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="text-gold text-lg">✦</span>
+              <p class="font-body text-sm text-white/80">Ongoing support & community access</p>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="text-gold text-lg">✦</span>
+              <p class="font-body text-sm text-white/80">Certification upon completion</p>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="text-gold text-lg">✦</span>
+              <p class="font-body text-sm text-white/80">Learn from a Master with 8+ years experience</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials Section -->
+<section class="py-24 md:py-32 bg-cream">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-16 reveal">
+      <p class="font-body text-gold text-sm tracking-[0.3em] uppercase mb-4">Client Love</p>
+      <h2 class="font-display text-4xl md:text-5xl font-medium text-charcoal">What They Say</h2>
+      <div class="w-16 h-0.5 bg-gold mx-auto mt-6"></div>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="testimonial-card bg-white rounded-2xl p-8 border border-nude/50 reveal">
+        <div class="flex items-center gap-1 mb-4">
+          <span class="text-gold">★</span><span class="text-gold">★</span><span class="text-gold">★</span><span class="text-gold">★</span><span class="text-gold">★</span>
+        </div>
+        <p class="font-body text-mocha/80 leading-relaxed mb-6">"Tannis is INCREDIBLE. I've been seeing her for 2 years and my lashes have never looked better. She really takes the time to customize the look."</p>
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 bg-nude rounded-full flex items-center justify-center">
+            <span class="font-display text-sm text-mocha">S</span>
+          </div>
+          <div>
+            <p class="font-body text-sm font-medium text-charcoal">Sarah M.</p>
+            <p class="font-body text-xs text-mocha/60">Volume Set Client</p>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card bg-white rounded-2xl p-8 border border-nude/50 reveal">
+        <div class="flex items-center gap-1 mb-4">
+          <span class="text-gold">★</span><span class="text-gold">★</span><span class="text-gold">★</span><span class="text-gold">★</span><span class="text-gold">★</span>
+        </div>
+        <p class="font-body text-mocha/80 leading-relaxed mb-6">"Best lash training I could've asked for! Tannis is patient, thorough, and genuinely wants you to succeed. I left feeling confident to take clients."</p>
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 bg-nude rounded-full flex items-center justify-center">
+            <span class="font-display text-sm text-mocha">J</span>
+          </div>
+          <div>
+            <p class="font-body text-sm font-medium text-charcoal">Jessica L.</p>
+            <p class="font-body text-xs text-mocha/60">Training Graduate</p>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card bg-white rounded-2xl p-8 border border-nude/50 reveal">
+        <div class="flex items-center gap-1 mb-4">
+          <span class="text-gold">★</span><span class="text-gold">★</span><span class="text-gold">★</span><span class="text-gold">★</span><span class="text-gold">★</span>
+        </div>
+        <p class="font-body text-mocha/80 leading-relaxed mb-6">"My lash lift looks so natural and lasts forever. The studio is gorgeous and Tannis makes you feel so comfortable. Can't recommend enough!"</p>
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 bg-nude rounded-full flex items-center justify-center">
+            <span class="font-display text-sm text-mocha">A</span>
+          </div>
+          <div>
+            <p class="font-body text-sm font-medium text-charcoal">Amanda K.</p>
+            <p class="font-body text-xs text-mocha/60">Lash Lift Client</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Location Section -->
+<section id="contact" class="py-24 md:py-32 bg-warmwhite">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <div class="reveal">
+        <p class="font-body text-gold text-sm tracking-[0.3em] uppercase mb-4">Find Us</p>
+        <h2 class="font-display text-4xl md:text-5xl font-medium text-charcoal leading-tight mb-6">North Vancouver<br>Studio</h2>
+        <div class="section-divider mb-8"></div>
+        <div class="space-y-6">
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 bg-nude rounded-xl flex items-center justify-center shrink-0">
+              <span class="text-xl">📍</span>
+            </div>
+            <div>
+              <h4 class="font-display text-lg font-medium text-charcoal">Address</h4>
+              <p class="font-body text-mocha/70 mt-1">A-321 Mountain Hwy<br>North Vancouver, BC</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 bg-nude rounded-xl flex items-center justify-center shrink-0">
+              <span class="text-xl">✉️</span>
+            </div>
+            <div>
+              <h4 class="font-display text-lg font-medium text-charcoal">Email</h4>
+              <a href="mailto:thelooklashstudio@gmail.com" class="font-body text-mocha/70 mt-1 hover:text-gold transition-colors">thelooklashstudio@gmail.com</a>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 bg-nude rounded-xl flex items-center justify-center shrink-0">
+              <span class="text-xl">💬</span>
+            </div>
+            <div>
+              <h4 class="font-display text-lg font-medium text-charcoal">Book Via DM</h4>
+              <p class="font-body text-mocha/70 mt-1">Message us on Instagram to book your appointment</p>
+              <a href="https://instagram.com/thelooklashstudio" target="_blank" class="font-body text-sm text-gold hover:text-espresso transition-colors">@thelooklashstudio →</a>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 bg-nude rounded-xl flex items-center justify-center shrink-0">
+              <span class="text-xl">🏔️</span>
+            </div>
+            <div>
+              <h4 class="font-display text-lg font-medium text-charcoal">The Vibe</h4>
+              <p class="font-body text-mocha/70 mt-1">Nestled at the base of the North Shore mountains — a calm, elevated space where west coast beauty meets expert craft.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="aspect-square bg-gradient-to-br from-nude via-blush/50 to-rose/30 rounded-3xl flex items-center justify-center relative overflow-hidden">
+          <div class="absolute inset-0 opacity-20">
+            <svg class="w-full h-full" viewBox="0 0 400 400" fill="none">
+              <path d="M50 350L100 280L150 310L200 200L250 260L300 150L350 220L400 100" stroke="#C9A96E" stroke-width="2" fill="none"/>
+              <path d="M0 380L80 300L160 340L240 180L320 250L400 130" stroke="#5D4037" stroke-width="1" fill="none" opacity="0.3"/>
+            </svg>
+          </div>
+          <div class="text-center relative z-10 p-8">
+            <p class="font-display text-6xl md:text-7xl text-charcoal/20 mb-4">🏔️</p>
+            <p class="font-display text-xl text-charcoal font-medium">The Look Lash Studio</p>
+            <p class="font-body text-sm text-mocha/60 mt-2">A-321 Mountain Hwy, North Van</p>
+            <a href="https://maps.google.com/?q=A-321+Mountain+Hwy+North+Vancouver+BC" target="_blank" class="inline-flex items-center gap-2 mt-6 px-6 py-3 bg-charcoal text-white font-body text-xs tracking-wider uppercase rounded-full hover:bg-espresso transition-all duration-300">
+              Get Directions
+              <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Book Now CTA -->
+<section id="book" class="py-24 md:py-32 bg-charcoal relative overflow-hidden">
+  <div class="absolute inset-0 opacity-10">
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-gold blur-3xl"></div>
+  </div>
+  <div class="relative max-w-4xl mx-auto px-6 text-center">
+    <div class="reveal">
+      <p class="font-body text-gold text-sm tracking-[0.3em] uppercase mb-4">Ready?</p>
+      <h2 class="font-display text-4xl md:text-6xl font-medium text-white leading-tight mb-6">
+        Your Best Lashes<br>Are One DM Away<span class="gradient-text">.</span>
+      </h2>
+      <p class="font-body text-lg text-white/60 max-w-xl mx-auto mb-10">
+        Now accepting new clients. DM us on Instagram to book your lash or brow appointment, or inquire about training programs.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="https://instagram.com/thelooklashstudio" target="_blank" class="float-cta inline-flex items-center gap-3 px-8 py-4 bg-gold text-charcoal font-body text-sm tracking-wider uppercase rounded-full hover:bg-white transition-all duration-300 hover:shadow-2xl">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          DM to Book
+        </a>
+        <a href="mailto:thelooklashstudio@gmail.com" class="inline-flex items-center gap-3 px-8 py-4 border border-white/30 text-white font-body text-sm tracking-wider uppercase rounded-full hover:bg-white/10 transition-all duration-300">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          Email Us
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-espresso py-16">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+      <div>
+        <h3 class="font-display text-2xl font-semibold text-white mb-4">The Look<span class="text-gold">.</span></h3>
+        <p class="font-body text-sm text-white/50 leading-relaxed">Master lash artistry in the heart of North Vancouver. Lashes, brows & training by Tannis McLean.</p>
+      </div>
+      <div>
+        <h4 class="font-body text-xs tracking-widest uppercase text-gold mb-4">Quick Links</h4>
+        <div class="flex flex-col gap-2">
+          <a href="#services" class="font-body text-sm text-white/60 hover:text-gold transition-colors">Services</a>
+          <a href="#about" class="font-body text-sm text-white/60 hover:text-gold transition-colors">About</a>
+          <a href="#gallery" class="font-body text-sm text-white/60 hover:text-gold transition-colors">Gallery</a>
+          <a href="#training" class="font-body text-sm text-white/60 hover:text-gold transition-colors">Training</a>
+          <a href="#book" class="font-body text-sm text-white/60 hover:text-gold transition-colors">Book Now</a>
+        </div>
+      </div>
+      <div>
+        <h4 class="font-body text-xs tracking-widest uppercase text-gold mb-4">Connect</h4>
+        <div class="flex flex-col gap-2">
+          <a href="https://instagram.com/thelooklashstudio" target="_blank" class="font-body text-sm text-white/60 hover:text-gold transition-colors">@thelooklashstudio</a>
+          <a href="https://instagram.com/tm.lashes" target="_blank" class="font-body text-sm text-white/60 hover:text-gold transition-colors">@tm.lashes</a>
+          <a href="mailto:thelooklashstudio@gmail.com" class="font-body text-sm text-white/60 hover:text-gold transition-colors">thelooklashstudio@gmail.com</a>
+        </div>
+      </div>
+    </div>
+    <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+      <p class="font-body text-xs text-white/40">© 2026 The Look Lash Studio. All rights reserved.</p>
+      <p class="font-body text-xs text-white/40">A-321 Mountain Hwy, North Vancouver, BC</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Scroll reveal
+const revealElements = document.querySelectorAll('.reveal');
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), i * 100);
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+revealElements.forEach(el => revealObserver.observe(el));
+
+// Navbar scroll effect
+let lastScroll = 0;
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  const currentScroll = window.scrollY;
+  if (currentScroll > 100) {
+    navbar.classList.add('shadow-sm');
+  } else {
+    navbar.classList.remove('shadow-sm');
+  }
+  lastScroll = currentScroll;
+});
+
+// Mobile menu
+function toggleMenu() {
+  const menu = document.getElementById('mobileMenu');
+  menu.classList.toggle('hidden');
+}
+
+// Before/After sliders
+document.querySelectorAll('[data-slider]').forEach(container => {
+  let isDragging = false;
+  const slider = container.querySelector('.ba-slider');
+  const afterLayer = container.querySelector('[style*="clip-path"]') || container.children[1];
+
+  function updateSlider(x) {
+    const rect = container.getBoundingClientRect();
+    let percent = ((x - rect.left) / rect.width) * 100;
+    percent = Math.max(5, Math.min(95, percent));
+    if (afterLayer) {
+      afterLayer.style.clipPath = `inset(0 ${100 - percent}% 0 0)`;
+    }
+    if (slider) {
+      slider.style.left = percent + '%';
+    }
+  }
+
+  container.addEventListener('mousedown', (e) => { isDragging = true; updateSlider(e.clientX); });
+  container.addEventListener('mousemove', (e) => { if (isDragging) updateSlider(e.clientX); });
+  container.addEventListener('mouseup', () => isDragging = false);
+  container.addEventListener('mouseleave', () => isDragging = false);
+
+  container.addEventListener('touchstart', (e) => { isDragging = true; updateSlider(e.touches[0].clientX); });
+  container.addEventListener('touchmove', (e) => { if (isDragging) { e.preventDefault(); updateSlider(e.touches[0].clientX); }});
+  container.addEventListener('touchend', () => isDragging = false);
+});
+
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+</script>
+
+</body>
+</html>
